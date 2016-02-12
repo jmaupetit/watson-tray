@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
 
   var status = child_process.execSync('watson status');
   console.log(status.toString());
-  res.render('index', { title: 'Watson', status: status.toString() });
+  res.render('index.html', { title: 'Watson', status: status.toString() });
 });
 
 module.exports = router;
