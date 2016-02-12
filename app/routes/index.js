@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
     var fs = require("fs");
     var content = fs.readFileSync('/Users/maupetit/Library/Application\ Support/watson/state');
     var state = JSON.parse(content);
-    console.log(state);
+
     res.render('index.html', { title: 'Watson', status: state });
 });
 

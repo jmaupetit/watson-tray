@@ -2,16 +2,21 @@ var express = require('express');
 var path = require('path');
 var nunjucks = require('nunjucks');
 var routes = require('./routes/index');
+var dateFilter = require('nunjucks-date-filter');
 
 var app = express();
 
 // template engine
 
-nunjucks.configure(path.join(__dirname, 'views/'), {
+var env = nunjucks.configure(path.join(__dirname, 'views/'), {
     autoescape: true,
     watch: true,
     express: app
 });
+
+// Filters
+
+env.addFilter('date', dateFilter);
 
 // routes
 
