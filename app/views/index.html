@@ -2,7 +2,22 @@
 
 {% block content %}
     <h1>{{ title }}</h1>
-    <pre>{{ status }}</pre>
+
+    <div class="status">
+    {% if status.project %}
+        <p class="running">
+            Project <span class="project">{{ status.project }}</span> started since <span class="from">{{ status.start }}</span>
+            {% if status.tags|length %}
+            with tags:
+            {% for tag in status.tags %}
+                <span class="tag">{{ tag }}</span>
+            {% endfor %}
+            {% endif %}
+        </p>
+    {% else %}
+        <p class="stopped">Nothing currently tracked</p>
+    {% endif %}
+    </div>
 
     <a href="/start">start</a> //
     <a href="/stop">stop</a>
