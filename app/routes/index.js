@@ -1,9 +1,13 @@
 var express = require('express');
 var router = express.Router();
+var child_process = require('child_process');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+
+  var status = child_process.execSync('watson status');
+  console.log(status.toString());
+  res.render('index', { title: 'Watson', status: status.toString() });
 });
 
 module.exports = router;
