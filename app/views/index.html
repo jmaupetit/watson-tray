@@ -4,9 +4,10 @@
     <div class="status">
     {% if status.project %}
         <div class="running">
+            <div class="timer" id="timer">00:00:00</div>
             <div class="project">{{ status.project }}</div>
             <div class="start">
-                started at <span class="from">{{ status.start }}</span>
+                started at <span class="from">{{ status.start_format }}</span>
             </div>
             {% if status.tags|length %}
             <div class="tags">
@@ -16,6 +17,9 @@
                 {% endif %}
             </div>
         </div>
+        <script>
+            initializeTimer('timer', '{{ status.start }}');
+        </script>
     {% else %}
         <div class="stopped">Nothing currently tracked</div>
     {% endif %}

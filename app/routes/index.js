@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 
     // Fix start date representation
     var start = moment.unix(parseInt(state.start, 10));
-    state.start = start.format('YYYY-MM-DD HH:mm');
+    state.start_format = start.format('YYYY-MM-DD HH:mm');
 
     res.render('index.html', { title: 'Watson', status: state });
 });

@@ -9,6 +9,7 @@ body {
     background-color: #202d3b;
     color: #fff;
     font-family: Lato;
+    font-weight: 300;
 }
 
 div.status {
@@ -21,10 +22,15 @@ div.status .running {
     height: 100%;
 }
 
-div.status .running .project {
-    display: block;
-    width: 100%;
+div.status .running .timer {
+    text-align: right;
     font-size: 3rem;
+}
+
+div.status .running .project {
+    color: #202d3b;
+    font-size: 3rem;
+    font-weight: 700;
 }
 
 div.status .running .start {
@@ -47,4 +53,3 @@ div.status .stopped {
     text-align: center;
     font-style: italic;
 }
-
