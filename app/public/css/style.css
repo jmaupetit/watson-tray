@@ -49,7 +49,9 @@ div.status .running .tags .tag {
 }
 
 div.status .stopped {
-    padding: 1rem;
+    padding: 65px;
     text-align: center;
     font-style: italic;
+    font-size: 2rem;
+    font-weight: 500;
 }
