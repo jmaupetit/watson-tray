@@ -14,10 +14,6 @@ var env = nunjucks.configure(path.join(__dirname, 'views/'), {
     express: app
 });
 
-// Filters
-
-env.addFilter('date', dateFilter);
-
 // routes
 
 app.use(express.static(path.join(__dirname, 'public')));

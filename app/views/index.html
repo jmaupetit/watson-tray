@@ -1,24 +1,23 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <h1>{{ title }}</h1>
-
     <div class="status">
     {% if status.project %}
-        <p class="running">
-            Project <span class="project">{{ status.project }}</span> started since <span class="from">{{ status.start|date }}</span>
+        <div class="running">
+            <div class="project">{{ status.project }}</div>
+            <div class="start">
+                started at <span class="from">{{ status.start }}</span>
+            </div>
             {% if status.tags|length %}
-            with tags:
-            {% for tag in status.tags %}
-                <span class="tag">{{ tag }}</span>
-            {% endfor %}
-            {% endif %}
-        </p>
+            <div class="tags">
+                {% for tag in status.tags %}
+                    <span class="tag">{{ tag }}</span>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
     {% else %}
-        <p class="stopped">Nothing currently tracked</p>
+        <div class="stopped">Nothing currently tracked</div>
     {% endif %}
     </div>
-
-    <a href="/start">start</a> //
-    <a href="/stop">stop</a>
 {% endblock %}
