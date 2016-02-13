@@ -2,23 +2,23 @@
 
 {% block content %}
     <div class="status">
-    {% if status.project %}
+    {% if state.project %}
         <div class="running">
             <div class="timer" id="timer">00:00:00</div>
-            <div class="project">{{ status.project }}</div>
+            <div class="project">{{ state.project }}</div>
             <div class="start">
-                started at <span class="from">{{ status.start_format }}</span>
+                started at <span class="from">{{ state.start_format }}</span>
             </div>
-            {% if status.tags|length %}
+            {% if state.tags|length %}
             <div class="tags">
-                {% for tag in status.tags %}
+                {% for tag in state.tags %}
                     <span class="tag">{{ tag }}</span>
                 {% endfor %}
                 {% endif %}
             </div>
         </div>
         <script>
-            initializeTimer('timer', '{{ status.start }}');
+            initializeTimer('timer', '{{ state.start }}');
         </script>
     {% else %}
         <div class="stopped">Watson is not running</div>
