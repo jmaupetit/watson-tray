@@ -2,8 +2,10 @@ var menubar = require('menubar');
 
 var mb = menubar({
     'dir': 'app',
+    'index': 'http://localhost:3000',
     'tooltip': 'Watson',
-    'height:': 200
+    'preload-window': true,
+    'height': 220
 });
 
 mb.on('ready', function ready () {

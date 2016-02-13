@@ -8,6 +8,9 @@ var app = require('../app');
 var debug = require('debug')('app:server');
 var http = require('http');
 
+var electronPath = require( 'electron-prebuilt' ) ;
+var childProcess = require( 'child_process' ) ;
+
 /**
  * Get port from environment and store in Express.
  */
@@ -88,3 +91,15 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+/*
+  Electron
+ */
+// Adjust the command line arguments: remove the "node <code.js>" part
+var args = process.argv.slice( 2 ) ;
+// ... and insert the root path of our application (it's the parent directory)
+// as the first argument
+args.unshift( __dirname + '/../../' ) ;
+
+// Run electron
+childProcess.spawn( electronPath , args , { stdio: 'inherit' } ) ;
