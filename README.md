@@ -1,4 +1,4 @@
-# Watson menubar
+# Watson tray
 
 ## instructions
 
