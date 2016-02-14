@@ -1,12 +1,13 @@
 var express = require('express');
 var moment = require('moment');
 var router = express.Router();
+var config = require('../config.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
     var fs = require("fs");
-    var content = fs.readFileSync('/Users/maupetit/Library/Application\ Support/watson/state');
+    var content = fs.readFileSync(config.watsonStateFile);
     var state = JSON.parse(content);
 
     // Fix start date representation

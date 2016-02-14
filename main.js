@@ -1,8 +1,10 @@
 var menubar = require('menubar');
+var chokidar = require('chokidar');
+var config = require('./app/config.js');
 
 var mb = menubar({
     'dir': 'app',
-    'index': 'http://localhost:3000',
+    'index': config.watsonStateUrl,
     'tooltip': 'Watson',
     'preload-window': true,
     'height': 220
@@ -11,9 +13,13 @@ var mb = menubar({
 mb.on('ready', function ready () {
     console.log('app is ready');
 
-    var exec = require('child_process').exec;
+    // Watch watson state add reload the app upon change
+    var watcher = chokidar.watch(config.watsonStateFile, {
+        persistent: true
+    });
 
-    function puts(error, stdout, stderr) { console.log(stdout) }
-
-    exec("watson status", puts);
+    watcher.on('change', function(path){
+        console.log('watson state changed');
+        mb.window.loadURL(config.watsonStateUrl);
+    });
 });
