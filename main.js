@@ -4,6 +4,7 @@ var config = require('./app/config.js');
 
 var mb = menubar({
     'dir': 'app',
+    'icon': './IconTemplate@2x.png',
     'index': config.watsonStateUrl,
     'tooltip': 'Watson',
     'preload-window': true,
